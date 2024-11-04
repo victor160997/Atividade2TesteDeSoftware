@@ -72,5 +72,90 @@ namespace StringExtensions
 
             return name;
         }
+
+    public static string HtmlClassify(this string text)
+    {
+        if (string.IsNullOrWhiteSpace(text))
+        {
+            return "";
+        }
+
+        var friendlier = text.CamelFriendly();
+
+        var result = new char[friendlier.Length];
+
+        var cursor = 0;
+        var previousIsNotLetter = false;
+        for (var i = 0; i < friendlier.Length; i++)
+        {
+            var current = friendlier[i];
+            if (IsLetter(current) || (char.IsDigit(current) && cursor > 0))
+            {
+                if (previousIsNotLetter && i != 0 && cursor > 0)
+                {
+                    result[cursor++] = '-';
+                }
+
+                result[cursor++] = char.ToLowerInvariant(current);
+                previousIsNotLetter = false;
+            }
+            else
+            {
+                previousIsNotLetter = true;
+            }
+        }
+
+        return new string(result, 0, cursor);
+    }
+
+    public static bool IsLetter(this char c)
+    {
+        return ('A' <= c && c <= 'Z') || ('a' <= c && c <= 'z');
+    }
+
+    public static bool IsSpace(this char c)
+    {
+        return (c == '\r' || c == '\n' || c == '\t' || c == '\f' || c == ' ');
+    }
+
+    public static string Strip(this string subject, Func<char, bool> predicate)
+    {
+        var result = new char[subject.Length];
+
+        var cursor = 0;
+        for (var i = 0; i < subject.Length; i++)
+        {
+            var current = subject[i];
+            if (!predicate(current))
+            {
+                result[cursor++] = current;
+            }
+        }
+
+        return new string(result, 0, cursor);
+    }
+
+    public static string CamelFriendly(this string camel)
+    {
+        // Optimize common cases.
+        if (string.IsNullOrWhiteSpace(camel))
+        {
+            return "";
+        }
+
+        using var sb = ZString.CreateStringBuilder();
+        for (var i = 0; i < camel.Length; ++i)
+        {
+            var c = camel[i];
+            if (i != 0 && char.IsUpper(c))
+            {
+                sb.Append(' ');
+            }
+            sb.Append(c);
+        }
+
+        return sb.ToString();
+    }
+
     }
 }
