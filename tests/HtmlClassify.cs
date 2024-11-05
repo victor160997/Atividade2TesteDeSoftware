@@ -42,7 +42,7 @@ public class HtmlClassifyTests
         string resultado = input.HtmlClassify();
 
         // Assert
-        Assert.AreEqual(string.Empty, resultado);
+        Assert.AreEqual("teste-entrada-camel-case", resultado);
     }
 
     [Test]
@@ -55,7 +55,7 @@ public class HtmlClassifyTests
         string resultado = input.HtmlClassify();
 
         // Assert
-        Assert.AreEqual(string.Empty, resultado);
+        Assert.AreEqual("teste-trata3-numero", resultado);
     }
 
     [Test]
@@ -68,7 +68,7 @@ public class HtmlClassifyTests
         string resultado = input.HtmlClassify();
 
         // Assert
-        Assert.AreEqual(string.Empty, resultado);
+        Assert.AreEqual("teste-trata-caractere-especial", resultado);
     }
 
 }

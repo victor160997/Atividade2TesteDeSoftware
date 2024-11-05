@@ -1,25 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\davim\\OneDrive\\Área de Trabalho\\faculdade\\6periodo\\teste\\Nova pasta\\Atividade2TesteDeSoftware\\StringExtensions\\StringExtensions.csproj": {}
+    "C:\\Users\\victor.rodrigues\\source\\repos\\Atividade2TesteDeSoftware\\StringExtensions\\StringExtensions.csproj": {}
   },
   "projects": {
-    "C:\\Users\\davim\\OneDrive\\Área de Trabalho\\faculdade\\6periodo\\teste\\Nova pasta\\Atividade2TesteDeSoftware\\StringExtensions\\StringExtensions.csproj": {
+    "C:\\Users\\victor.rodrigues\\source\\repos\\Atividade2TesteDeSoftware\\StringExtensions\\StringExtensions.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\davim\\OneDrive\\Área de Trabalho\\faculdade\\6periodo\\teste\\Nova pasta\\Atividade2TesteDeSoftware\\StringExtensions\\StringExtensions.csproj",
+        "projectUniqueName": "C:\\Users\\victor.rodrigues\\source\\repos\\Atividade2TesteDeSoftware\\StringExtensions\\StringExtensions.csproj",
         "projectName": "StringExtensions",
-        "projectPath": "C:\\Users\\davim\\OneDrive\\Área de Trabalho\\faculdade\\6periodo\\teste\\Nova pasta\\Atividade2TesteDeSoftware\\StringExtensions\\StringExtensions.csproj",
-        "packagesPath": "C:\\Users\\davim\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\davim\\OneDrive\\Área de Trabalho\\faculdade\\6periodo\\teste\\Nova pasta\\Atividade2TesteDeSoftware\\StringExtensions\\obj\\",
+        "projectPath": "C:\\Users\\victor.rodrigues\\source\\repos\\Atividade2TesteDeSoftware\\StringExtensions\\StringExtensions.csproj",
+        "packagesPath": "C:\\Users\\victor.rodrigues\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\victor.rodrigues\\source\\repos\\Atividade2TesteDeSoftware\\StringExtensions\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\davim\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\victor.rodrigues\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -42,6 +44,12 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
+          "dependencies": {
+            "ZString": {
+              "target": "Package",
+              "version": "[2.6.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -58,7 +66,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.206/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

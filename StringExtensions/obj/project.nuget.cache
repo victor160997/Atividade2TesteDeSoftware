@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "9Lcy8DVmTqI=",
+  "dgSpecHash": "SH/+lQGxmC/MsniLQUtgqHetMsVFZrZOYOIGP0tJgnLmzMKFn7+A5IlqK9vdPX3kalX3FxXJub1NFvncF65PQQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\davim\\OneDrive\\Área de Trabalho\\faculdade\\6periodo\\teste\\Nova pasta\\Atividade2TesteDeSoftware\\StringExtensions\\StringExtensions.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\victor.rodrigues\\source\\repos\\Atividade2TesteDeSoftware\\StringExtensions\\StringExtensions.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\victor.rodrigues\\.nuget\\packages\\zstring\\2.6.0\\zstring.2.6.0.nupkg.sha512"
+  ],
   "logs": []
 }

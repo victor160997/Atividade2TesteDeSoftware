@@ -1,4 +1,5 @@
 using System.Net;
+using Cysharp.Text;
 
 namespace StringExtensions
 {
@@ -51,7 +52,7 @@ namespace StringExtensions
                 return string.Empty;
             }
 
-            name = RemoveDiacritics(name);
+            // name = RemoveDiacritics(name);
             name = name.Strip(c =>
                 !c.IsLetter()
                 && !char.IsDigit(c)
@@ -73,89 +74,89 @@ namespace StringExtensions
             return name;
         }
 
-    public static string HtmlClassify(this string text)
-    {
-        if (string.IsNullOrWhiteSpace(text))
+        public static string HtmlClassify(this string text)
         {
-            return "";
-        }
-
-        var friendlier = text.CamelFriendly();
-
-        var result = new char[friendlier.Length];
-
-        var cursor = 0;
-        var previousIsNotLetter = false;
-        for (var i = 0; i < friendlier.Length; i++)
-        {
-            var current = friendlier[i];
-            if (IsLetter(current) || (char.IsDigit(current) && cursor > 0))
+            if (string.IsNullOrWhiteSpace(text))
             {
-                if (previousIsNotLetter && i != 0 && cursor > 0)
+                return "";
+            }
+
+            var friendlier = text.CamelFriendly();
+
+            var result = new char[friendlier.Length];
+
+            var cursor = 0;
+            var previousIsNotLetter = false;
+            for (var i = 0; i < friendlier.Length; i++)
+            {
+                var current = friendlier[i];
+                if (IsLetter(current) || (char.IsDigit(current) && cursor > 0))
                 {
-                    result[cursor++] = '-';
+                    if (previousIsNotLetter && i != 0 && cursor > 0)
+                    {
+                        result[cursor++] = '-';
+                    }
+
+                    result[cursor++] = char.ToLowerInvariant(current);
+                    previousIsNotLetter = false;
                 }
+                else
+                {
+                    previousIsNotLetter = true;
+                }
+            }
 
-                result[cursor++] = char.ToLowerInvariant(current);
-                previousIsNotLetter = false;
-            }
-            else
-            {
-                previousIsNotLetter = true;
-            }
+            return new string(result, 0, cursor);
         }
 
-        return new string(result, 0, cursor);
-    }
-
-    public static bool IsLetter(this char c)
-    {
-        return ('A' <= c && c <= 'Z') || ('a' <= c && c <= 'z');
-    }
-
-    public static bool IsSpace(this char c)
-    {
-        return (c == '\r' || c == '\n' || c == '\t' || c == '\f' || c == ' ');
-    }
-
-    public static string Strip(this string subject, Func<char, bool> predicate)
-    {
-        var result = new char[subject.Length];
-
-        var cursor = 0;
-        for (var i = 0; i < subject.Length; i++)
+        public static bool IsLetter(this char c)
         {
-            var current = subject[i];
-            if (!predicate(current))
-            {
-                result[cursor++] = current;
-            }
+            return ('A' <= c && c <= 'Z') || ('a' <= c && c <= 'z');
         }
 
-        return new string(result, 0, cursor);
-    }
-
-    public static string CamelFriendly(this string camel)
-    {
-        // Optimize common cases.
-        if (string.IsNullOrWhiteSpace(camel))
+        public static bool IsSpace(this char c)
         {
-            return "";
+            return (c == '\r' || c == '\n' || c == '\t' || c == '\f' || c == ' ');
         }
 
-        using var sb = ZString.CreateStringBuilder();
-        for (var i = 0; i < camel.Length; ++i)
+        public static string Strip(this string subject, Func<char, bool> predicate)
         {
-            var c = camel[i];
-            if (i != 0 && char.IsUpper(c))
+            var result = new char[subject.Length];
+
+            var cursor = 0;
+            for (var i = 0; i < subject.Length; i++)
             {
-                sb.Append(' ');
+                var current = subject[i];
+                if (!predicate(current))
+                {
+                    result[cursor++] = current;
+                }
             }
-            sb.Append(c);
+
+            return new string(result, 0, cursor);
         }
 
-        return sb.ToString();
-    }
+        public static string CamelFriendly(this string camel)
+        {
+            // Optimize common cases.
+            if (string.IsNullOrWhiteSpace(camel))
+            {
+                return "";
+            }
+
+            using var sb = ZString.CreateStringBuilder();
+            for (var i = 0; i < camel.Length; ++i)
+            {
+                var c = camel[i];
+                if (i != 0 && char.IsUpper(c))
+                {
+                    sb.Append(' ');
+                }
+                sb.Append(c);
+            }
+
+            return sb.ToString();
+        }
 
     }
 }

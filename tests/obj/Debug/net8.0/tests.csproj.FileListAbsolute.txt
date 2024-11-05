@@ -209,3 +209,4 @@ C:\Users\victor.rodrigues\source\repos\Atividade2TesteDeSoftware\StringExtension
 C:\Users\victor.rodrigues\source\repos\Atividade2TesteDeSoftware\StringExtensions.Test\obj\Debug\net8.0\tests.genruntimeconfig.cache
 C:\Users\victor.rodrigues\source\repos\Atividade2TesteDeSoftware\StringExtensions.Test\obj\Debug\net8.0\ref\tests.dll
 C:\Users\victor.rodrigues\source\repos\Atividade2TesteDeSoftware\tests\obj\Debug\net8.0\tests.sourcelink.json
+C:\Users\victor.rodrigues\source\repos\Atividade2TesteDeSoftware\tests\bin\Debug\net8.0\ZString.dll

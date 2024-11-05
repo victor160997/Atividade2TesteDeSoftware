@@ -378,9 +378,25 @@
           }
         }
       },
+      "ZString/2.6.0": {
+        "type": "package",
+        "compile": {
+          "lib/net7.0/ZString.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0/ZString.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "StringExtensions/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "ZString": "2.6.0"
+        },
         "compile": {
           "bin/placeholder/StringExtensions.dll": {}
         },
@@ -981,6 +997,26 @@
         "version.txt"
       ]
     },
+    "ZString/2.6.0": {
+      "sha512": "XE8a+11nZg0LRaf+RGABEWaHIf8yGd5w8v/Ra1iWxMBmAVzwuKbW7G21mS0U7w7sh1lYcgckInWGgnz4qyET8A==",
+      "type": "package",
+      "path": "zstring/2.6.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "lib/net6.0/ZString.dll",
+        "lib/net6.0/ZString.xml",
+        "lib/net7.0/ZString.dll",
+        "lib/net7.0/ZString.xml",
+        "lib/netstandard2.0/ZString.dll",
+        "lib/netstandard2.0/ZString.xml",
+        "lib/netstandard2.1/ZString.dll",
+        "lib/netstandard2.1/ZString.xml",
+        "zstring.2.6.0.nupkg.sha512",
+        "zstring.nuspec"
+      ]
+    },
     "StringExtensions/1.0.0": {
       "type": "project",
       "path": "../StringExtensions/StringExtensions.csproj",
@@ -998,32 +1034,34 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\davim\\.nuget\\packages\\": {}
+    "C:\\Users\\victor.rodrigues\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\davim\\OneDrive\\Área de Trabalho\\faculdade\\6periodo\\teste\\Nova pasta\\Atividade2TesteDeSoftware\\tests\\tests.csproj",
+      "projectUniqueName": "C:\\Users\\victor.rodrigues\\source\\repos\\Atividade2TesteDeSoftware\\tests\\tests.csproj",
       "projectName": "tests",
-      "projectPath": "C:\\Users\\davim\\OneDrive\\Área de Trabalho\\faculdade\\6periodo\\teste\\Nova pasta\\Atividade2TesteDeSoftware\\tests\\tests.csproj",
-      "packagesPath": "C:\\Users\\davim\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\davim\\OneDrive\\Área de Trabalho\\faculdade\\6periodo\\teste\\Nova pasta\\Atividade2TesteDeSoftware\\tests\\obj\\",
+      "projectPath": "C:\\Users\\victor.rodrigues\\source\\repos\\Atividade2TesteDeSoftware\\tests\\tests.csproj",
+      "packagesPath": "C:\\Users\\victor.rodrigues\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\victor.rodrigues\\source\\repos\\Atividade2TesteDeSoftware\\tests\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\davim\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\victor.rodrigues\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\davim\\OneDrive\\Área de Trabalho\\faculdade\\6periodo\\teste\\Nova pasta\\Atividade2TesteDeSoftware\\StringExtensions\\StringExtensions.csproj": {
-              "projectPath": "C:\\Users\\davim\\OneDrive\\Área de Trabalho\\faculdade\\6periodo\\teste\\Nova pasta\\Atividade2TesteDeSoftware\\StringExtensions\\StringExtensions.csproj"
+            "C:\\Users\\victor.rodrigues\\source\\repos\\Atividade2TesteDeSoftware\\StringExtensions\\StringExtensions.csproj": {
+              "projectPath": "C:\\Users\\victor.rodrigues\\source\\repos\\Atividade2TesteDeSoftware\\StringExtensions\\StringExtensions.csproj"
             }
           }
         }
@@ -1080,7 +1118,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.206/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

@@ -13,3 +13,6 @@ C:\Users\victor.rodrigues\source\repos\Atividade2TesteDeSoftware\StringExtension
 C:\Users\victor.rodrigues\source\repos\Atividade2TesteDeSoftware\StringExtensions\obj\Debug\net8.0\StringExtensions.genruntimeconfig.cache
 C:\Users\victor.rodrigues\source\repos\Atividade2TesteDeSoftware\StringExtensions\obj\Debug\net8.0\ref\StringExtensions.dll
 C:\Users\victor.rodrigues\source\repos\Atividade2TesteDeSoftware\StringExtensions\obj\Debug\net8.0\StringExtensions.sourcelink.json
+C:\Users\victor.rodrigues\source\repos\Atividade2TesteDeSoftware\StringExtensions\bin\Debug\net8.0\ZString.dll
+C:\Users\victor.rodrigues\source\repos\Atividade2TesteDeSoftware\StringExtensions\obj\Debug\net8.0\StringExtensions.csproj.AssemblyReference.cache
+C:\Users\victor.rodrigues\source\repos\Atividade2TesteDeSoftware\StringExtensions\obj\Debug\net8.0\StringEx.07267486.Up2Date
