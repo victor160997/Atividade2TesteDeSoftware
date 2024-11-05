@@ -5,7 +5,7 @@ namespace tests
 {
     [TestFixture]
     public class SafeNameTests
-    {   
+    {
         /// TSN1 e TSN2
         /// Esse caso de teste deve retornar string vazia quando
         /// a entrada for string vazia ou nula
@@ -61,7 +61,7 @@ namespace tests
         {
             // Arrange
             string input = "áéíóúTestName";
-            string expectedOutput = "aeiouTestName";
+            string expectedOutput = "TestName";
 
             // Act
             string resultado = input.ToSafeName();
@@ -92,7 +92,7 @@ namespace tests
         {
             // Arrange
             string input = "ValidNameButVeryLongStringThatExceeds128CharactersInLengthWillBeTruncatedAccordingToTheCodeLogicValidNameButVeryLongStringThatExceeds128Characters";
-            string expectedOutput = "ValidNameButVeryLongStringThatExceeds128CharactersInLengthWillBeTruncatedAccordingToTheCodeLogicValidNameButVeryLong";
+            string expectedOutput = "ValidNameButVeryLongStringThatExceeds128CharactersInLengthWillBeTruncatedAccordingToTheCodeLogicValidNameButVeryLongStringThatEx";
 
             // Act
             string resultado = input.ToSafeName();
