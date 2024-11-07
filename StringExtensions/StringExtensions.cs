@@ -157,6 +157,48 @@ namespace StringExtensions
 
             return sb.ToString();
         }
+        
+            
+        public static string Translate(this string subject, char[] from, char[] to)
+        {
+            if (string.IsNullOrEmpty(subject))
+            {
+                return subject;
+            }
+
+            ArgumentNullException.ThrowIfNull(from);
+
+            ArgumentNullException.ThrowIfNull(to);
+
+            if (from.Length != to.Length)
+            {
+                throw new ArgumentNullException(nameof(from), "Parameters must have the same length");
+            }
+
+            var map = new Dictionary<char, char>(from.Length);
+            for (var i = 0; i < from.Length; i++)
+            {
+                map[from[i]] = to[i];
+            }
+
+            var result = new char[subject.Length];
+
+            for (var i = 0; i < subject.Length; i++)
+            {
+                var current = subject[i];
+                if (map.TryGetValue(current, out var value))
+                {
+                    result[i] = value;
+                }
+                else
+                {
+                    result[i] = current;
+                }
+            }
+
+            return new string(result);
+        }
+
 
     }
 }
