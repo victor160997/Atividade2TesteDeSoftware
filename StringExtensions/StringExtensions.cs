@@ -199,6 +199,28 @@ namespace StringExtensions
             return new string(result);
         }
 
+        public static string Strip(this string subject, params char[] stripped)
+        {
+            if (stripped == null || stripped.Length == 0 || string.IsNullOrEmpty(subject))
+            {
+                return subject;
+            }
+
+            var result = new char[subject.Length];
+
+            var cursor = 0;
+            for (var i = 0; i < subject.Length; i++)
+            {
+                var current = subject[i];
+                if (Array.IndexOf(stripped, current) < 0)
+                {
+                    result[cursor++] = current;
+                }
+            }
+
+            return new string(result, 0, cursor);
+        }
+
          public static string ToPascalCase(this string attribute, char upperAfterDelimiter)
     {
         attribute = attribute.Trim();
