@@ -199,6 +199,52 @@ namespace StringExtensions
             return new string(result);
         }
 
+         public static string ToPascalCase(this string attribute, char upperAfterDelimiter)
+    {
+        attribute = attribute.Trim();
+
+        var delimitersCount = 0;
+
+        for (var i = 0; i < attribute.Length; i++)
+        {
+            if (attribute[i] == upperAfterDelimiter)
+            {
+                delimitersCount++;
+            }
+        }
+
+        var result = string.Create(attribute.Length - delimitersCount, new { attribute, upperAfterDelimiter }, (buffer, state) =>
+        {
+            var nextIsUpper = true;
+            var k = 0;
+
+            for (var i = 0; i < state.attribute.Length; i++)
+            {
+                var c = state.attribute[i];
+
+                if (c == state.upperAfterDelimiter)
+                {
+                    nextIsUpper = true;
+                    continue;
+                }
+
+                if (nextIsUpper)
+                {
+                    buffer[k] = char.ToUpperInvariant(c);
+                }
+                else
+                {
+                    buffer[k] = c;
+                }
+
+                nextIsUpper = false;
+
+                k++;
+            }
+        });
+
+        return result;
+    }
 
     }
 }
