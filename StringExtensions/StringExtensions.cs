@@ -157,8 +157,8 @@ namespace StringExtensions
 
             return sb.ToString();
         }
-        
-            
+
+
         public static string Translate(this string subject, char[] from, char[] to)
         {
             if (string.IsNullOrEmpty(subject))
@@ -199,52 +199,109 @@ namespace StringExtensions
             return new string(result);
         }
 
-         public static string ToPascalCase(this string attribute, char upperAfterDelimiter)
-    {
-        attribute = attribute.Trim();
-
-        var delimitersCount = 0;
-
-        for (var i = 0; i < attribute.Length; i++)
+        public static string ToPascalCase(this string attribute, char upperAfterDelimiter)
         {
-            if (attribute[i] == upperAfterDelimiter)
+            attribute = attribute.Trim();
+
+            var delimitersCount = 0;
+
+            for (var i = 0; i < attribute.Length; i++)
             {
-                delimitersCount++;
+                if (attribute[i] == upperAfterDelimiter)
+                {
+                    delimitersCount++;
+                }
             }
+
+            var result = string.Create(attribute.Length - delimitersCount, new { attribute, upperAfterDelimiter }, (buffer, state) =>
+            {
+                var nextIsUpper = true;
+                var k = 0;
+
+                for (var i = 0; i < state.attribute.Length; i++)
+                {
+                    var c = state.attribute[i];
+
+                    if (c == state.upperAfterDelimiter)
+                    {
+                        nextIsUpper = true;
+                        continue;
+                    }
+
+                    if (nextIsUpper)
+                    {
+                        buffer[k] = char.ToUpperInvariant(c);
+                    }
+                    else
+                    {
+                        buffer[k] = c;
+                    }
+
+                    nextIsUpper = false;
+
+                    k++;
+                }
+            });
+
+            return result;
         }
 
-        var result = string.Create(attribute.Length - delimitersCount, new { attribute, upperAfterDelimiter }, (buffer, state) =>
+        public static string Strip(this string subject, params char[] stripped)
         {
-            var nextIsUpper = true;
-            var k = 0;
-
-            for (var i = 0; i < state.attribute.Length; i++)
+            if (stripped == null || stripped.Length == 0 || string.IsNullOrEmpty(subject))
             {
-                var c = state.attribute[i];
-
-                if (c == state.upperAfterDelimiter)
-                {
-                    nextIsUpper = true;
-                    continue;
-                }
-
-                if (nextIsUpper)
-                {
-                    buffer[k] = char.ToUpperInvariant(c);
-                }
-                else
-                {
-                    buffer[k] = c;
-                }
-
-                nextIsUpper = false;
-
-                k++;
+                return subject;
             }
-        });
 
-        return result;
-    }
+            var result = new char[subject.Length];
+
+            var cursor = 0;
+            for (var i = 0; i < subject.Length; i++)
+            {
+                var current = subject[i];
+                if (Array.IndexOf(stripped, current) < 0)
+                {
+                    result[cursor++] = current;
+                }
+            }
+
+            return new string(result, 0, cursor);
+        }
+
+        // public async Task<string> GetContentItemIdFromRouteAsync(PathString url)
+        // {
+        //     if (!url.HasValue)
+        //     {
+        //         url = "/";
+        //     }
+
+        //     string contentItemId = null;
+
+        //     if (url == "/")
+        //     {
+        //         // get contentItemId from homeroute
+        //         var siteSettings = await _siteService.GetSiteSettingsAsync();
+        //         contentItemId = siteSettings.HomeRoute["contentItemId"]?.ToString();
+        //     }
+        //     else
+        //     {
+        //         // Try to get from autorouteEntries.
+        //         // This should not consider contained items, so will redirect to the parent item.
+        //         (var found, var entry) = await _autorouteEntries.TryGetEntryByPathAsync(url.Value);
+
+        //         if (found)
+        //         {
+        //             contentItemId = entry.ContentItemId;
+        //         }
+        //     }
+
+        //     if (string.IsNullOrEmpty(contentItemId))
+        //     {
+        //         return null;
+        //     }
+
+        //     return contentItemId;
+        // }
 
     }
 }

@@ -1,4 +1,3 @@
-using NUnit.Framework;
 using StringExtensions;
 
 namespace tests;
@@ -11,7 +10,7 @@ public class ToPascalCase
     {
         // Arrange
         string input = "palavraTeste";
-        char delimiter = ' '; 
+        char delimiter = ' ';
 
         // Act
         string result = input.ToPascalCase(delimiter);
@@ -19,7 +18,7 @@ public class ToPascalCase
         // Assert
         Assert.AreEqual("PalavraTeste", result);
     }
-        [Test]
+    [Test]
     public void ToPascalCase_StringWithHyphenDelimiter_ReturnsPascalCase()
     {
         // Arrange
@@ -32,12 +31,12 @@ public class ToPascalCase
         // Assert
         Assert.AreEqual("CasoDeTeste", result);
     }
-        [Test]
+    [Test]
     public void ToPascalCase_SingleWordWithoutDelimiter_ReturnsFirstLetterUpperCase()
     {
         // Arrange
         string input = "teste";
-        char delimiter = '-'; 
+        char delimiter = '-';
 
         // Act
         string result = input.ToPascalCase(delimiter);
@@ -45,12 +44,12 @@ public class ToPascalCase
         // Assert
         Assert.AreEqual("Teste", result);
     }
-        [Test]
+    [Test]
     public void ToPascalCase_EmptyString_ReturnsEmptyString()
     {
         // Arrange
         string input = "";
-        char delimiter = '-'; 
+        char delimiter = '-';
 
         // Act
         string result = input.ToPascalCase(delimiter);
@@ -58,31 +57,31 @@ public class ToPascalCase
         // Assert
         Assert.AreEqual("", result);
     }
-        [Test]
+    [Test]
     public void ToPascalCase_AllUppercaseSingleWord_ReturnsFirstLetterUppercaseRestLowercase()
     {
         // Arrange
-        string input = "PALAVRACASODETESTE";
-        char delimiter = '-'; 
+        string input = "PALAVRA-CASODE-TESTE";
+        char delimiter = '-';
 
         // Act
         string result = input.ToPascalCase(delimiter);
 
         // Assert
-        Assert.AreEqual("Palavracasodeteste", result);
+        Assert.AreEqual("PALAVRACASODETESTE", result);
     }
-        [Test]
+    [Test]
     public void ToPascalCase_StringAlreadyInPascalCase_ReturnsSameString()
     {
         // Arrange
         string input = "UmTeste";
-        char delimiter = '-'; 
+        char delimiter = '-';
 
         // Act
         string result = input.ToPascalCase(delimiter);
 
         // Assert
         Assert.AreEqual("UmTeste", result);
-    }   
+    }
 }
 
