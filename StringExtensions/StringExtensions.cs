@@ -302,6 +302,40 @@ namespace StringExtensions
 
         //     return contentItemId;
         // }
+         public static string Ellipsize(this string text, int characterCount, string ellipsis, bool wordBoundary = false)
+    {
+        if (string.IsNullOrWhiteSpace(text))
+        {
+            return "";
+        }
 
+        if (characterCount < 0 || text.Length <= characterCount)
+        {
+            return text;
+        }
+
+        // Search beginning of word.
+        var backup = characterCount;
+        while (characterCount > 0 && text[characterCount - 1].IsLetter())
+        {
+            characterCount--;
+        }
+
+        // Search previous word.
+        while (characterCount > 0 && text[characterCount - 1].IsSpace())
+        {
+            characterCount--;
+        }
+
+        // If it was the last word, recover it, unless boundary is requested.
+        if (characterCount == 0 && !wordBoundary)
+        {
+            characterCount = backup;
+        }
+
+        var trimmed = text[..characterCount];
+        return trimmed + ellipsis;
+    }        
+        
     }
 }
